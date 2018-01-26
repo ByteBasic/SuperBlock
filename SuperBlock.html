@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<style>
+	body{
+		background-color: #000000;
+	}
+	.Canvas{
+		position:absolute;
+		left:33%;
+		top:10%;
+		border:1px solid #000000;
+	}
+	.Title{
+		font-family: verdana;
+		font-size: 50px;
+		color: #FFFFFF;
+		text-shadow: 0px 0px 20px #FFFFFF;
+		position: absolute;
+		user-select: none;
+		left:39%;
+	}
+</style>
+
+<html>
+	<head>
+		<title>-Super Block-</title>
+	</head>
+	<body>
+		<div class="Title">-Super Block-</div>
+	</body>
+</html>
+
+<canvas id="Canvas" class="Canvas" width="600" height="800"></canvas>
+
+<script>
+	//Create canvas reference
+	 var canvasRef = document.getElementById("Canvas");
+	//Create varible to store canvas reference
+	 var canvas  = canvasRef.getContext("2d");
+
+	//Draw Background
+	 canvas.fillStyle = "#FFFFFF"; //Set Color
+	 canvas.fillRect(0,0,600,800); //Draw Background
+
+	//Drawing color (canvas is our varible that refers to our canvas)
+	 canvas.fillStyle = "#AAAAAA";
+
+	//Our player X and Y (For movement later on)
+	 var PlayerX = 275;
+	 var PlayerY = 725;
+
+	//Draw the player
+	 canvas.fillRect(PlayerX,PlayerY,50,75);
+
+	//Put player controls here. A = Move Left ; D = Move Right
+
+</script>
