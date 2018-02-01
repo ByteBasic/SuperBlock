@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<sty<!DOCTYPE html>
 <style>
 	body{
 		background-color: #000000;
@@ -25,32 +25,62 @@
 		<title>-Super Block-</title>
 	</head>
 	<body>
-		<div class="Title">-Super Block-</div>
-	</body>
-</html>
-
-<canvas id="Canvas" class="Canvas" width="600" height="800"></canvas>
-
+	 
+        <div class="Title">-Super Block-</div>
+            
+        <section style="border-style: solid; border-width: 2px; width: 500px;left: 33%; top: 10%;background-color: white;">
+        <canvas class="Canvas" WIDTH="600" HEIGHT="800" ID="Canvas" tabindex="0" style="background-color: white;">
+        </canvas>
+    </section>
 <script>
 	//Create canvas reference
 	 var canvasRef = document.getElementById("Canvas");
 	//Create varible to store canvas reference
 	 var canvas  = canvasRef.getContext("2d");
-
 	//Draw Background
-	 canvas.fillStyle = "#FFFFFF"; //Set Color
+	 canvas.fillStyle = "white"; //Set Color
 	 canvas.fillRect(0,0,600,800); //Draw Background
-
-	//Drawing color (canvas is our varible that refers to our canvas)
-	 canvas.fillStyle = "#AAAAAA";
-
+	//Drawing color (Canvas is our variable that refers to our canvas)
+	 canvas.fillStyle = "gray";
 	//Our player X and Y (For movement later on)
 	 var PlayerX = 275;
 	 var PlayerY = 725;
-
 	//Draw the player
-	 canvas.fillRect(PlayerX,PlayerY,50,75);
-
+	 canvas.fillRect(PlayerX,PlayerY,50,75,);
 	//Put player controls here. A = Move Left ; D = Move Right
+	var canvas = document.getElementById("Canvas");
+        canvas.addEventListener('keydown', doKeyDown, true);
+        canvas_context = canvas.getContext("2d");
+        canvas_context.fillRect(PlayerX, PlayerY, 50, 75);
+
+        var x = PlayerX;
+        var y = PlayerY;
+
+        function doKeyDown(e){
+
+            //  THE A KEy
+            if (e.keyCode == 65) {
+            	if (x <= 0) return;
+                clearCanvas();
+                x = x - 3;
+                canvas_context.fillStyle = "gray";
+                canvas_context.fillRect(x,y,50,75);
+            }
+            //  THE D KEY
+            if (e.keyCode == 68) {
+            	if (x >= 550) return;
+                clearCanvas();
+                x = x + 3;
+                canvas_context.fillStyle = "gray";                
+                canvas_context.fillRect(x, y, 50, 75);
+            }
+
+        }
+
+        function clearCanvas() {
+            canvas.width = canvas.width;
+        }
 
 </script>
+ </body>
+</html>
