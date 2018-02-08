@@ -18,6 +18,7 @@
 		user-select: none;
 		left:39%;
 	}
+
 </style>
 
 <html>
@@ -27,7 +28,7 @@
 	<body>
 	 
         <div class="Title">-Super Block-</div>
-            
+        <div style="color: white; padding-left: 50px; padding-top: 300px; font-family: cursive;"> Press TAB to begin and press A to go left and D to go right</div>
         <section style="border-style: solid; border-width: 2px; width: 500px;left: 33%; top: 10%;background-color: white;">
         <canvas class="Canvas" WIDTH="600" HEIGHT="800" ID="Canvas" tabindex="0" style="background-color: white;">
         </canvas>
@@ -52,12 +53,9 @@
         canvas.addEventListener('keydown', doKeyDown, true);
         canvas_context = canvas.getContext("2d");
         canvas_context.fillRect(PlayerX, PlayerY, 50, 75);
-
         var x = PlayerX;
         var y = PlayerY;
-
         function doKeyDown(e){
-
             //  THE A KEy
             if (e.keyCode == 65) {
             	if (x <= 0) return;
@@ -74,13 +72,10 @@
                 canvas_context.fillStyle = "gray";                
                 canvas_context.fillRect(x, y, 50, 75);
             }
-
         }
-
         function clearCanvas() {
             canvas.width = canvas.width;
         }
-
 </script>
  </body>
 </html>
