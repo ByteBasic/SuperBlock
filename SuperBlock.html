@@ -60,7 +60,7 @@
             if (e.keyCode == 65) {
             	if (x <= 0) return;
                 clearCanvas();
-                x = x - 3;
+                x = x - 10;
                 canvas_context.fillStyle = "gray";
                 canvas_context.fillRect(x,y,50,75);
             }
@@ -68,7 +68,7 @@
             if (e.keyCode == 68) {
             	if (x >= 550) return;
                 clearCanvas();
-                x = x + 3;
+                x = x + 10;
                 canvas_context.fillStyle = "gray";                
                 canvas_context.fillRect(x, y, 50, 75);
             }
