@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<style>
+	body{
+		background-color: rgba(230,230,230,255)
+	}
+	.Canvas {
+		position:absolute;
+		top:10%;
+		left:34%;
+
+		box-shadow: 0 0 16px 2px rgba(0,0,0,0.4);
+		background-color: #FFF;
+	}
+	.Title{
+		font-family: verdana;
+		font-size: 60px;
+		text-align: center;
+		user-select: none;
+		color:rgba(200,200,200,255);
+
+		position:absolute;
+		left:38%;
+		top:62%;
+	}
+	.Link {
+		font-family: verdana;
+		font-size: 20px;
+		text-align: center;
+		text-decoration: none;
+		user-select: none;
+		color:rgba(200,200,200,255);
+
+		position:absolute;
+		left:40%;
+		top:94%;
+	}
+</style>
+
+<html>
+<head>
+	<title>SuperBlock 2.0</title>
+</head>
+<body>
+	<T class = "Title">SuperBlock</T>
+	<a target="_blank" href = "https://github.com/ByteBasic" class = "Link">Our GitHub Organization</a>
+</body>
+</html>
+	<canvas class = "Canvas" width="500" height = "500"></canvas>
+<script>
+	
+//Player
+	//Player Object: X Y VelX VelY JumpForce CanJump BCol TCol RCol LCol
+	//Key Input (W,A,S,D,Space)
+	//Player Movement
+
+//Tile Engine
+	//Tile Array
+	//Tile Defining: TileSize TileX TileY TileType
+	//Tile Array Reader
+	
+</script>
