@@ -51,18 +51,51 @@
 var canvas = document.getElementById("Canvas");
 	ctx = canvas.getContext("2d");
 
-	var x = -50;
-	var y = 200;
+	var x = 225;
+	var y = 225;
+
+	var keyW,keyA,keyS,keyD
+
 	function update() {
 		ctx.clearRect(0,0,500,500);
 		ctx.fill();
-		ctx.fillStyle  = "black"
-		x += 10;
-		ctx.fillRect(x,y,50,100)
+		ctx.fillStyle  = "#DDD"
+
+		
+		if(keyA == true){x++}
+		if(keyS == true){y++}
+		if(keyW == true){y--}
+		if(keyD == true){x--}
+
+		ctx.fillRect(x,y,50,50)
 		requestAnimationFrame(update);
 	}
 
 	update();
+
+	function onKeyDown(event) {
+		var keyCode = event.keyCode;
+		switch(keyCode){
+			case 87:
+				keyW = true;
+				x =+ 10
+			break;
+
+			case 65:
+				keyA = true;
+			break;
+
+			case 83:
+				keyS = true
+			break;
+
+			case 68:
+				keyD = true
+			break
+		}
+	}
+
+	document.addEventListener("keydown", onKeyDown);
 
 //Player
 	//Player Object: X Y VelX VelY JumpForce CanJump BCol TCol RCol LCol
