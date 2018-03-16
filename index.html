@@ -62,12 +62,10 @@ var canvas = document.getElementById("Canvas");
 		ctx.clearRect(0,0,500,500);
 		ctx.fill();
 		ctx.fillStyle  = "#DDD"
-
-		if(keyA == true){px -= pSpeed}
-		if(keyS == true){py += pSpeed}
-		if(keyW == true){py -= pSpeed}
-		if(keyD == true){px += pSpeed}
-
+			if(keyW == true){py -= pSpeed}
+			if(keyA == true){px -= pSpeed}
+			if(keyS == true){py += pSpeed}
+			if(keyD == true){px += pSpeed}
 		ctx.fillRect(px,py,50,50)
 		requestAnimationFrame(update);
 	}
@@ -77,44 +75,21 @@ var canvas = document.getElementById("Canvas");
 	function onKeyDown(event) {
 		var keyCode = event.keyCode;
 		switch(keyCode){
-			case 87:
-				keyW = true;
-			break;
-
-			case 65:
-				keyA = true;
-			break;
-
-			case 83:
-				keyS = true;
-			break;
-
-			case 68:
-				keyD = true;
-			break
+			case 87: keyW = true; break;
+			case 65: keyA = true; break;
+			case 83: keyS = true; break;
+			case 68: keyD = true; break;
 		}
 	}
 	function onKeyUp(event) {
 		var keyCode = event.keyCode;
 		switch(keyCode){
-			case 87:
-				keyW = false;
-			break;
-
-			case 65:
-				keyA = false;
-			break;
-
-			case 83:
-				keyS = false;
-			break;
-
-			case 68:
-				keyD = false;
-			break
+			case 87: keyW = false; break;
+			case 65: keyA = false; break;
+			case 83: keyS = false; break;
+			case 68: keyD = false; break;
 		}
 	}
-
 	document.addEventListener("keyup", onKeyUp);
 	document.addEventListener("keydown", onKeyDown);
 
