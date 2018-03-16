@@ -55,17 +55,16 @@ var canvas = document.getElementById("Canvas");
 	var py = 225;
 	var pSpeed = 2;
  
-
-	var keyW,keyA,keyS,keyD
+	var Keys = new Array(256).fill(false)
 
 	function update() {
 		ctx.clearRect(0,0,500,500);
 		ctx.fill();
 		ctx.fillStyle  = "#DDD"
-			if(keyW == true){py -= pSpeed}
-			if(keyA == true){px -= pSpeed}
-			if(keyS == true){py += pSpeed}
-			if(keyD == true){px += pSpeed}
+			if(Keys[87] == true){py -= pSpeed}
+			if(Keys[65] == true){px -= pSpeed}
+			if(Keys[83] == true){py += pSpeed}
+			if(Keys[68] == true){px += pSpeed}
 		ctx.fillRect(px,py,50,50)
 		requestAnimationFrame(update);
 	}
@@ -73,23 +72,13 @@ var canvas = document.getElementById("Canvas");
 	update();
 
 	function onKeyDown(event) {
-		var keyCode = event.keyCode;
-		switch(keyCode){
-			case 87: keyW = true; break;
-			case 65: keyA = true; break;
-			case 83: keyS = true; break;
-			case 68: keyD = true; break;
-		}
+		Keys[event.keyCode] = true;
 	}
 	function onKeyUp(event) {
-		var keyCode = event.keyCode;
-		switch(keyCode){
-			case 87: keyW = false; break;
-			case 65: keyA = false; break;
-			case 83: keyS = false; break;
-			case 68: keyD = false; break;
-		}
+
+		Keys[event.keyCode] = false;
 	}
+	
 	document.addEventListener("keyup", onKeyUp);
 	document.addEventListener("keydown", onKeyDown);
 
