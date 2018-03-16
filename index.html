@@ -50,12 +50,10 @@
 	
 var canvas = document.getElementById("Canvas");
 	ctx = canvas.getContext("2d");
-
-	var px = 225;
-	var py = 225;
-	var pSpeed = 2;
- 
-	var Keys = new Array(256).fill(false)
+		var px = 225;
+		var py = 225;
+		var pSpeed = 2;
+		var Keys = new Array(256).fill(false)
 
 	function update() {
 		ctx.clearRect(0,0,500,500);
@@ -75,10 +73,9 @@ var canvas = document.getElementById("Canvas");
 		Keys[event.keyCode] = true;
 	}
 	function onKeyUp(event) {
-
 		Keys[event.keyCode] = false;
 	}
-	
+
 	document.addEventListener("keyup", onKeyUp);
 	document.addEventListener("keydown", onKeyDown);
 
