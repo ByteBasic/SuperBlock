@@ -5,8 +5,9 @@
 	}
 	.Canvas {
 		position:absolute;
-		top:10%;
-		left:36%;
+		top:40%;
+		left:50%;
+		transform: translate(-50%,-50%);
 
 		box-shadow: 0 0 16px 2px rgba(0,0,0,0.4);
 		background-color: #FFF;
@@ -19,8 +20,9 @@
 		color:rgba(200,200,200,255);
 
 		position:absolute;
-		left:40%;
-		top:62%;
+		left:50%;
+		top:70%;
+		transform: translate(-50%, -50%);
 	}
 	.Link {
 		font-family: verdana;
@@ -31,8 +33,9 @@
 		color:rgba(200,200,200,255);
 
 		position:absolute;
-		left:42%;
+		left:50%;
 		top:94%;
+		transform: translate(-50%,-50%);
 	}
 </style>
 
@@ -43,20 +46,20 @@
 <body>
 	<T class = "Title">SuperBlock</T>
 	<a target="_blank" href = "https://github.com/ByteBasic" class = "Link">Our GitHub Organization</a>
+	<canvas id = "Canvas" class = "Canvas" width="1000" height = "500"></canvas>
 </body>
 </html>
-	<canvas id = "Canvas" class = "Canvas" width="500" height = "500"></canvas>
 <script>
 	
 var canvas = document.getElementById("Canvas");
 	ctx = canvas.getContext("2d");
-		var px = 225;
+		var px = 475;
 		var py = 225;
 		var pSpeed = 2;
 		var Keys = new Array(256).fill(false)
 
 	function update() {
-		ctx.clearRect(0,0,500,500);
+		ctx.clearRect(0,0,1000,500);
 		ctx.fill();
 		ctx.fillStyle  = "#DDD"
 			if(Keys[87] == true){py -= pSpeed}
