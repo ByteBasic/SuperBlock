@@ -5,24 +5,22 @@ var canvas = document.getElementById("Canvas");
 			vx:0,
 			vy:0,
 			maxFallVel:20,
-			maxUpwardsVel:15,
+			maxUpwardsVel:1500,
 			x:475,
 			y:225,
 		}
 		var gravity = 1;
-		var canJump = true;
+		var canJump = false;
 		var Keys = new Array(256).fill(false)
 	function update() {
 		ctx.clearRect(0,0,1000,500);
 		ctx.fill();
 		ctx.fillStyle  = Player.color
-			if(Keys[87] == true) //W
+			if(Keys[87] == true && canJump == true) //W
 			{
-				if(canJump == true) {
-						Player.vy += 5;
-						Player.y -= Player.vy;
-				}
-				
+				Player.vy += 20;
+				Player.y -= Player.vy;
+				canJump = false;
 			} else {
 				Player.vy -= gravity;
 				Player.y -= Player.vy; 
@@ -32,15 +30,19 @@ var canvas = document.getElementById("Canvas");
 				Player.vx -= 5; 
 				Player.x += Player.vx;
 			} else {Player.vx = 0}
+
 			if(Keys[68] == true){ //D
 				Player.vx += 5;
 				Player.x += Player.vx;
 			} else {Player.vx = 0}
-				if(Player.vy > Player.maxUpwardsVel){ Player.vy = Player.maxUpwardsVel;}
-				if(Player.vy < -Player.maxFallVel){ Player.vy = -Player.maxFallVel;}
+
+			if(Player.vy > Player.maxUpwardsVel){ Player.vy = Player.maxUpwardsVel;}
+			if(Player.vy < -Player.maxFallVel){ Player.vy = -Player.maxFallVel;}
+
 				if(Player.y > 450){
 					Player.vy = 0;
 					Player.y = 450;
+					canJump = true;
 				}
 		ctx.fillRect(Player.x,Player.y,50,50)
 		requestAnimationFrame(update);
