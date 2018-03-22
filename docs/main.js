@@ -8,7 +8,6 @@ var canvas = document.getElementById("Canvas");
 			maxUpwardsVel:15,
 			x:475,
 			y:225,
-			spd:2,
 		}
 		var gravity = 1;
 		var canJump = true;
