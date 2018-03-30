@@ -7,6 +7,7 @@ var canvas = document.getElementById("Canvas");
 			vy:0,
 			x:475,
 			y:225,
+			speed:1.5,
 			canJump:false,
 		}
 
@@ -18,28 +19,23 @@ var canvas = document.getElementById("Canvas");
 		ctx.clearRect(0,0,1000,500);
 		ctx.fill();
 		ctx.fillStyle  = Player.color
-			if(Keys["w"] == true && Player.canJump == true){
-				Player.vy -= 20;
+			if((Keys["w"] == true || Keys[" "] == true) && Player.canJump == true){
+				Player.vy -= 15;
 				Player.canJump = false;
 			} else {Player.vy += gravity}
+				if(Keys["a"] == true){Player.vx -= Player.speed}
+				if(Keys["d"] == true){Player.vx += Player.speed}
 
-			if(Keys["a"] == true){Player.vx -= 2}
-			if(Keys["d"] == true){Player.vx += 2}
-
-			if(Player.vy < -Player.maxFallVel){ Player.vy = -Player.maxFallVel;}
-
-				if(Player.y > 450){
-					Player.vy = 0;
-					Player.y = 450;
-					Player.canJump = true;
-				}
-
+			if(Player.y > 475){
+				Player.vy = 0;
+				Player.y = 475;
+				Player.canJump = true;
+			}
 				Player.vx *= friction;
-
 				Player.x += Player.vx;
 				Player.y += Player.vy;
 
-		ctx.fillRect(Player.x,Player.y,50,50)
+		ctx.fillRect(Player.x,Player.y,25,25)
 		requestAnimationFrame(update);
 	}
 
