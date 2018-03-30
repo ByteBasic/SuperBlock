@@ -11,6 +11,8 @@ var canvas = document.getElementById("Canvas");
 			canJump:false,
 		}
 
+		var currentColorMode = 0;
+
 		var gravity = 1;
 		var friction = 0.8;
 		var Keys = {}
@@ -46,6 +48,27 @@ var canvas = document.getElementById("Canvas");
 	}
 	function onKeyUp(event) {
 		Keys[event.key] = false;
+	}
+	function darkMode() {
+		if(currentColorMode == 0){
+			document.body.style.backgroundColor = "rgba(100,100,100,255)"
+			document.getElementById("Title").style.color = "rgba(80,80,80,255)"
+			document.getElementById("Link").style.color = "rgba(80,80,80,255)"
+			document.getElementById("ModeButton").style.color = "rgba(80,80,80,255)"
+				document.getElementById("ModeButton").textContent = "Light Mode"
+			document.getElementById("Canvas").style.backgroundColor = "rgba(80,80,80,255)"
+			Player.color = "rgba(100,100,100,255)"
+				currentColorMode = 1;
+		} else {
+			document.body.style.backgroundColor = "rgba(230,230,230,255)"
+			document.getElementById("Title").style.color = "rgba(200,200,200,255)"
+			document.getElementById("Link").style.color = "rgba(200,200,200,255)"
+			document.getElementById("ModeButton").style.color = "rgba(200,200,200,255)"
+				document.getElementById("ModeButton").textContent = "Dark Mode"
+			document.getElementById("Canvas").style.backgroundColor = "rgba(255,255,255,255)"
+			Player.color = "#DDD"
+				currentColorMode = 0;
+		}
 	}
 	document.addEventListener("keyup", onKeyUp);
 	document.addEventListener("keydown", onKeyDown);
