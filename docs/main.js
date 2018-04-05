@@ -1,107 +1,103 @@
-//Map Data
-var MapData = ["                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "                                        ",
-			   "F                                      F",
-			   "F                                      F",
-			   "F                                      F",
-			   "F                                      F",
-			   "F                FFFFFF                F",
-			   "F                                      F",
-			   "F                                      F",
-			   "FFFFFFFF                        FFFFFFFF",
-			   ];
+var Level = {
+	TileSize: 25,
 
-//Map Variables
-	var TileSize = 25;
-	var TileColors = {
-		floor: "rgba(180,180,180,255)",
+	Tiles: {
+		Floor: {id: 0, color: "rgba(180,180,180,255)", friction: .8, solid: 1},
 	}
-	var CurrentTile;
-	var CurrentLevel = 1;
+}
 
-//Canvas Variables
-	var canvas = document.getElementById("Canvas");
-	var ctx = canvas.getContext("2d");
+var MapData = [
+	[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+];
 
-//General Global Variables
-	var currentColorMode = 0;
-	var Keys = {}
+var Physics = {
+	gravity: 1,
+	friction: .8,
+}
 
-//Entity Physics Variables
-	var gravity = 1;
-	var friction = 0.8;
-
-//Player Object
-	var Player = {
+var Player = {
+	pos: { x: 500, y: 250 },
+	vel: {
+		x: 0,
+		y: 0,
+		max: { x: 15, y: 15},
+	},
+		canJump : false,
 		color: "#DDD",
-		vx:0,
-		vy:0,
-		x:488,
-		y:225,
+		size: 25,
 		speed:1.5,
-		jumpForce:15,
-		canJump:false,
+}
+
+var Keys = {}
+var currentColorMode = 0;
+
+var Canvas = document.getElementById("Canvas")
+var ViewPort = Canvas.getContext("2d");
+
+function Update() {
+	ViewPort.clearRect(0,0,1000,500);
+
+	if((Keys["w"] || Keys[" "]) && Player.canJump == true){
+		Player.vel.y = -Player.size / 1.5;
+		Player.canJump = false;
 	}
-//Main Update Function
-
-	function update() {
-		ctx.clearRect(0,0,1000,500);
-
-		var mapX = Math.floor(Player.x/TileSize)
-		var mapY = Math.floor(Player.y/TileSize)
-
-		if((Keys["w"] == true || Keys[" "] == true) && Player.canJump == true){
-			Player.vy -= Player.jumpForce;
-			Player.canJump = false;
-		} else {Player.vy += gravity}
-			if(Keys["a"] == true){Player.vx -= Player.speed}
-			if(Keys["d"] == true){Player.vx += Player.speed}
-		
-			Player.vx *= friction;
-			Player.x += Player.vx;
-			Player.y += Player.vy;
-
-		
-		for(var i = 0; i < 40; i++) {
-			for(var j = 0 ; j < 20; j++) {
-				 CurrentTile = MapData[j].charAt(i);
-				if(CurrentTile == "F") {
-					ctx.fillStyle = TileColors.floor
-				 	ctx.fillRect( i * TileSize, j * TileSize, TileSize, TileSize)
+	if(Keys["a"]){ Player.vel.x -= Player.speed}
+	if(Keys["d"]){ Player.vel.x += Player.speed}
+		Player.vel.y += Physics.gravity
+			if(Player.vel.y > Player.vel.max.y) { Player.vel.y = Player.vel.max.y}
+				if(Player.pos.y > 500-Player.size){
+					Player.vel.y = 0
+					Player.pos.y = 500-Player.size
+					Player.canJump = true;
 				}
+		Player.vel.x *= Physics.friction
+		Player.pos.x += Player.vel.x
+			Player.pos.y += Player.vel.y
+
+	for(var i = 0; i < 40; i++){
+		for(var j = 0; j < 20; j++){
+			if(MapData[j][i] == 1){
+				ViewPort.fillStyle = Level.Tiles.Floor.color
 			}
+			if(MapData[j][i] != 0){ViewPort.fillRect(i * Level.TileSize, j * Level.TileSize, Level.TileSize, Level.TileSize)}
 		}
-		if(Player.y > 475){
-			Player.vy = 0;
-			Player.y = 475;
-			Player.canJump = true;
-		}
-
-		ctx.fillStyle  = Player.color
-		ctx.fillRect(Player.x,Player.y,25,25)
-		requestAnimationFrame(update);
 	}
 
-	update();
-	
-//Misc. Functions
+		ViewPort.fillStyle = Player.color;
+		ViewPort.fillRect(Player.pos.x,Player.pos.y, Player.size, Player.size);
+	requestAnimationFrame(Update);
+}
 
-	function onKeyDown(event) {
-		Keys[event.key] = true;
-	}
-	function onKeyUp(event) {
-		Keys[event.key] = false;
-	}
+Update();
+
+function onKeyDown(event){
+	Keys[event.key] = true;
+}
+function onKeyUp(event){
+	Keys[event.key] = false;
+}
+
+	document.addEventListener("keyup", onKeyUp);
+	document.addEventListener("keydown", onKeyDown)
 
 	function colorMode() {
 		if(currentColorMode == 0){
@@ -113,8 +109,8 @@ var MapData = ["                                        ",
 			document.getElementById("Canvas").style.backgroundColor = "rgba(80,80,80,255)"
 			Player.color = "rgba(100,100,100,255)"
 
-			//Tiles
-				TileColors.floor = "rgba(60,60,60,255)"
+			Level.Tiles.Floor.color = "rgba(60,60,60,255)"
+
 					currentColorMode = 1;
 		} else {
 			document.body.style.backgroundColor = "rgba(230,230,230,255)"
@@ -125,12 +121,8 @@ var MapData = ["                                        ",
 			document.getElementById("Canvas").style.backgroundColor = "rgba(255,255,255,255)"
 			Player.color = "#DDD"
 
-			//Tiles
-				TileColors.floor = "rgba(180,180,180,255)"
+				Level.Tiles.Floor.color = "rgba(180,180,180,255)"
+				
 					currentColorMode = 0;
 		}
 	}
-
-//Key Event Listeners
-	document.addEventListener("keyup", onKeyUp);
-	document.addEventListener("keydown", onKeyDown);
