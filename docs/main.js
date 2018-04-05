@@ -41,6 +41,11 @@ var Player = {
 		y: 0,
 		max: { x: 15, y: 15},
 	},
+
+	loc: {
+		x: 0,
+		y: 0,
+	},
 		canJump : false,
 		color: "#DDD",
 		size: 25,
@@ -55,6 +60,10 @@ var ViewPort = Canvas.getContext("2d");
 
 function Update() {
 	ViewPort.clearRect(0,0,1000,500);
+
+	Player.loc.x = Math.floor(Player.pos.x / Level.TileSize)
+	Player.loc.y = Math.floor(Player.pos.y / Level.TileSize)
+
 
 	if((Keys["w"] || Keys[" "]) && Player.canJump == true){
 		Player.vel.y = -Player.size / 1.5;
@@ -73,6 +82,9 @@ function Update() {
 		Player.pos.x += Player.vel.x
 			Player.pos.y += Player.vel.y
 
+			MapData[Player.loc.y][Player.loc.x] = 1
+			document.getElementById("Debug").textContent = Player.loc.x + "," + Player.loc.y
+
 	for(var i = 0; i < 40; i++){
 		for(var j = 0; j < 20; j++){
 			if(MapData[j][i] == 1){
@@ -81,6 +93,7 @@ function Update() {
 			if(MapData[j][i] != 0){ViewPort.fillRect(i * Level.TileSize, j * Level.TileSize, Level.TileSize, Level.TileSize)}
 		}
 	}
+
 
 		ViewPort.fillStyle = Player.color;
 		ViewPort.fillRect(Player.pos.x,Player.pos.y, Player.size, Player.size);
