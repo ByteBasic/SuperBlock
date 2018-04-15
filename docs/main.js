@@ -61,8 +61,8 @@ var ViewPort = Canvas.getContext("2d");
 function Update() {
 	ViewPort.clearRect(0,0,1000,500);
 
-	Player.loc.x = Math.floor(Player.pos.x / Level.TileSize)
-	Player.loc.y = Math.floor(Player.pos.y / Level.TileSize)
+	Player.loc.x = Math.floor((Player.pos.x - Player.size/2) / Level.TileSize)
+	Player.loc.y = Math.floor((Player.pos.y - Player.size/2) / Level.TileSize)
 
 
 	if((Keys["w"] || Keys[" "]) && Player.canJump == true){
@@ -73,17 +73,16 @@ function Update() {
 	if(Keys["d"]){ Player.vel.x += Player.speed}
 		Player.vel.y += Physics.gravity
 			if(Player.vel.y > Player.vel.max.y) { Player.vel.y = Player.vel.max.y}
+
 				if(Player.pos.y > 500-Player.size){
 					Player.vel.y = 0
 					Player.pos.y = 500-Player.size
 					Player.canJump = true;
 				}
+
 		Player.vel.x *= Physics.friction
 		Player.pos.x += Player.vel.x
 			Player.pos.y += Player.vel.y
-
-			MapData[Player.loc.y][Player.loc.x] = 1
-			document.getElementById("Debug").textContent = Player.loc.x + "," + Player.loc.y
 
 	for(var i = 0; i < 40; i++){
 		for(var j = 0; j < 20; j++){
