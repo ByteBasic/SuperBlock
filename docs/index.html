@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SuperBlock 2.0</title>
-	<link rel="stylesheet" href="main.css">
+	<title>Dynamite Dog Games</title>
+	<link rel = "stylesheet" href = "main.css">
 </head>
 <body>
-	<T id = "Title" class = "Title">SuperBlock</T>
-	<a id = "Link" target = "_blank" href = "https://github.com/ByteBasic" class = "Link">Our GitHub Organization</a>
-	<div id = "ModeButton" type = "customButton" class="DMButton" onclick="colorMode()">Dark Mode</div>
-		<canvas id = "Canvas" class = "Canvas" width="1000" height = "500"></canvas>
-	<div id = "Debug"> Debug </div>
-	<script src="main.js"></script>
+	<div class = "BackGround"></div>
+	<div class = "Menu"></div>
+	<div class = "Name">Justin .C</div>
+	<div class = "BioHeading">Founder of Dynamite Dog Games</div>
+	<div class = "Bio"> Hello, im Justin. Im a young programmer who loves to do math and mess with numbers. I like messing with procedural content and algorithms to implement in my games.</div>
+	<div class = "ProjectsTab"></div>
+	<div class = "MenuButton" style = "top:45%" onclick = "Slide()"><PButton>Projects</PButton></div>
+	<div class = "ProjectsMenu" id = "ProjectsMenu">
+		
+		<PC class = "ProjectCard" style = "left:2%; top:2%">
+			<div class = "ProjectCardImg">
+				<div class = "ProjectCardText" style = "font-size:20px">Title
+					<div class = "ProjectCardSubText" style = "font-size:15px">Description</div>
+				</div>
+			</div>
+		</PC>
+		<PC class = "ProjectCard" style = "left:18.25%; top:2%"></PC>
+		<PC class = "ProjectCard" style = "left:34.25%; top:2%"></PC>
+		<PC class = "ProjectCard" style = "left:50.25%; top:2%"></PC>
+		<PC class = "ProjectCard" style = "left:66.25%; top:2%"></PC>
+		<PC class = "ProjectCard" style = "left:83%; top:2%"></PC>
+
+		<PC class = "ProjectCard" style = "left:2%; top:35%"></PC>
+		<PC class = "ProjectCard" style = "left:18.25%; top:35%"></PC>
+		<PC class = "ProjectCard" style = "left:34.25%; top:35%"></PC>
+		<PC class = "ProjectCard" style = "left:50.25%; top:35%"></PC>
+		<PC class = "ProjectCard" style = "left:66.25%; top:35%"></PC>
+		<PC class = "ProjectCard" style = "left:83%; top:35%"></PC>
+
+		<PC class = "ProjectCard" style = "left:2%; top:68%"></PC>
+		<PC class = "ProjectCard" style = "left:18.25%; top:68%"></PC>
+		<PC class = "ProjectCard" style = "left:34.25%; top:68%"></PC>
+		<PC class = "ProjectCard" style = "left:50.25%; top:68%"></PC>
+		<PC class = "ProjectCard" style = "left:66.25%; top:68%"></PC>
+		<PC class = "ProjectCard" style = "left:83%; top:68%"></PC>
+
+	</div>
 </body>
+<script src = "main.js"></script>
 </html>
